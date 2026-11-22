@@ -3,583 +3,249 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BRMMONEY Community — Interactive Demo</title>
+<title>BRMMONEY Community</title>
 <style>
 :root{--green:#123f32;--green2:#1d503f;--lime:#d8f35b;--paper:#f5f6ef;--ink:#18251f;--muted:#68766e;--line:#dfe5dc}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 Arial,Helvetica,sans-serif}
-.notice{background:#e5ebdf;padding:12px 5vw;font-size:12px;font-weight:700;letter-spacing:.04em;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
-header{max-width:1120px;margin:28px auto 20px;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:12px;font-weight:900;font-size:21px}.mark{background:var(--green);color:var(--lime);width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-family:Georgia;font-style:italic;font-size:25px}.brand small{display:block;font-size:10px;letter-spacing:.25em}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 Arial,Helvetica,sans-serif}
+.notice{background:#e5ebdf;padding:11px 5vw;font-size:12px;font-weight:700;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+header{max-width:1120px;margin:26px auto 18px;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;font-size:21px}
+.mark{background:var(--green);color:var(--lime);width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-family:Georgia;font-style:italic;font-size:25px}
+.brand small{display:block;font-size:10px;letter-spacing:.25em}
 .pill{background:#e5efdc;color:#34553c;padding:8px 15px;border-radius:30px;font-size:12px;font-weight:700}
 nav{max-width:1120px;margin:0 auto 22px;padding:0 24px;display:flex;gap:8px;flex-wrap:wrap}
-nav button{border:0;background:transparent;padding:12px 18px;border-radius:28px;font-size:15px;cursor:pointer;color:var(--ink)}
+nav button{border:0;background:transparent;padding:11px 16px;border-radius:28px;font-size:15px;cursor:pointer;color:var(--ink)}
 nav button.active{background:var(--green);color:white}
 main{max-width:1120px;margin:auto;padding:0 24px 45px}
 .hero{display:grid;grid-template-columns:1.05fr .95fr;background:var(--green);color:white;border-radius:22px;overflow:hidden}
-.hero>div{padding:38px}.eyebrow{font-size:11px;letter-spacing:.18em;font-weight:800}
-h1{font-size:clamp(30px,5vw,46px);line-height:1.08;font-weight:500;margin:18px 0}
-p{color:inherit}.hero p{color:#d4dfd7;max-width:390px}.wallet{background:var(--green2);display:flex;flex-direction:column;justify-content:space-between}
-.balance{font-size:58px;margin:20px 0 0}.balance span{font-size:18px}
-.btn{border:0;background:var(--lime);color:#18251f;padding:14px 20px;border-radius:28px;font-weight:800;cursor:pointer;margin-top:12px}
+.hero>div{padding:34px}.eyebrow{font-size:11px;letter-spacing:.18em;font-weight:800}
+h1{font-size:clamp(30px,5vw,46px);line-height:1.08;font-weight:500;margin:16px 0}
+p{color:inherit}.hero p{color:#d4dfd7;max-width:400px}
+.wallet{background:var(--green2);display:flex;flex-direction:column;justify-content:space-between}
+.balance{font-size:58px;margin:18px 0 0}.balance span{font-size:18px}
+.btn{border:0;background:var(--lime);color:#18251f;padding:13px 19px;border-radius:28px;font-weight:800;cursor:pointer;margin-top:12px}
 .btn.secondary{background:var(--green);color:white}.btn:disabled{opacity:.5;cursor:not-allowed}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:26px}
-.card{background:white;border:1px solid var(--line);border-radius:18px;padding:25px}
-h2{font-size:25px;margin:8px 0 12px}h3{margin:0 0 8px}.muted{color:var(--muted)}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}.steps div{border-top:1px solid var(--line);padding-top:14px;font-weight:700}.steps small{display:block;font-weight:400;color:var(--muted);margin-top:8px}
-.activity{display:flex;justify-content:space-between;gap:10px;padding:14px 0;border-bottom:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px}
+.card{background:white;border:1px solid var(--line);border-radius:18px;padding:24px}
+h2{font-size:25px;margin:8px 0 12px}h3{margin:0 0 8px}
+.muted{color:var(--muted)}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.steps div{border-top:1px solid var(--line);padding-top:12px;font-weight:700}
+.steps small{display:block;font-weight:400;color:var(--muted);margin-top:8px}
+.activity{display:flex;justify-content:space-between;gap:10px;padding:14px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
 .panel{display:none}.panel.active{display:block}
 .product{display:flex;justify-content:space-between;gap:15px;align-items:center;border-bottom:1px solid var(--line);padding:16px 0}.product:last-child{border:0}
 .tag{font-size:11px;background:#edf3e8;border-radius:20px;padding:5px 9px;color:#34553c}
+label{display:block;font-weight:700;margin:12px 0 5px}
+input,select{width:100%;max-width:520px;padding:12px;border:1px solid #cbd5c9;border-radius:10px;background:white;font:inherit}
 footer{max-width:1072px;margin:0 auto 30px;padding:18px 24px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
-@media(max-width:700px){.hero,.grid{grid-template-columns:1fr}.hero>div{padding:28px}.balance{font-size:48px}.steps{grid-template-columns:1fr}header{margin-top:20px}}
+@media(max-width:700px){.hero,.grid{grid-template-columns:1fr}.hero>div{padding:25px}.balance{font-size:48px}.steps{grid-template-columns:1fr}header{margin-top:18px}}
 </style>
 </head>
 <body>
-<div class="notice"><span>INTERACTIVE PREVIEW · SIMULATED DATA ONLY</span><span>No live payments · No Square connection · Resets on reload</span></div>
-<header><div class="brand"><div class="mark">b</div><div>BRMMONEY<small>COMMUNITY</small></div></div><span class="pill">Demo customer</span></header>
+<div class="notice"><span>BRMMONEY COMMUNITY</span><span>Credits are for eligible marketplace items only · No cash-out</span></div>
+<header><div class="brand"><div class="mark">b</div><div>BRMMONEY<small>COMMUNITY</small></div></div><span class="pill" id="topStatus">Guest</span></header>
 <nav aria-label="Main navigation">
-<button class="active" data-tab="wallet">My wallet</button><button data-tab="market">Marketplace</button><button data-tab="transactions">Transactions</button><button data-tab="community">Community</button>
-<button data-tab="member">Member Sign In</button>
-<button data-tab="owner" id="ownerTab" hidden>Owner Zone 🔒</button>
+<button class="active" data-tab="wallet">My Wallet</button><button data-tab="market">Marketplace</button><button data-tab="transactions">Transactions</button><button data-tab="community">Community</button><button data-tab="member">Member Sign In</button><button data-tab="owner" id="ownerTab" hidden>Owner Zone 🔒</button>
 </nav>
 <main>
 <section id="wallet" class="panel active">
-<div class="hero"><div><div class="eyebrow">YOUR COMMUNITY. YOUR CREDITS.</div><h1>A little credit.<br>A world of possibility.</h1><p>Buy BRM credits. Discover eligible products. Keep every transaction in one place.</p><button class="btn" onclick="showTab('market')">Try buying credits →</button></div>
-<div class="wallet"><div><div class="eyebrow">DEMO WALLET</div><div class="balance" id="balance">750 <span>BRM</span></div><p id="dollar">$7.50 toward eligible products</p></div><p class="muted">Not transferable · No cash exchange, except as required by law</p></div></div>
-<div class="grid"><div class="card"><div class="eyebrow">ONE SIMPLE PACKAGE</div><h2>$5.00 USD = 500 BRM</h2><p class="muted">Proposed redemption value: 1 BRM = $0.01 USD. Credits are issued only after a successful payment is confirmed.</p><div class="steps"><div>01 / Purchase<small>Square checkout in a future live version.</small></div><div>02 / Confirm<small>Verified payment, issued once.</small></div><div>03 / Redeem<small>Eligible marketplace products only.</small></div></div></div>
-<div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><h2>Latest activity</h2><button class="btn secondary" onclick="showTab('transactions')">View all</button></div><div class="activity"><span>Example opening balance<br><small class="muted">Illustrative</small></span><b>+750 BRM</b></div></div></div>
+<div class="hero"><div><div class="eyebrow">YOUR COMMUNITY. YOUR CREDITS.</div><h1>A little credit.<br>A world of possibility.</h1><p>Discover community rewards and eligible marketplace items. Your wallet and activity are in one place.</p><button class="btn" onclick="showTab('market')">Explore Marketplace →</button></div>
+<div class="wallet"><div><div class="eyebrow" id="walletLabel">DEMO WALLET</div><div class="balance" id="balance">750 <span>BRM</span></div><p id="dollar">$7.50 toward eligible products</p></div><p>Credits are not transferable and cannot be cashed out, except where required by law.</p></div></div>
+<div class="grid"><div class="card"><div class="eyebrow">CREDIT PACKAGE</div><h2>$5.00 USD = 500 BRM</h2><p class="muted">Proposed redemption value: 1 BRM = $0.01 USD. Credits should only be issued after confirmed payment or approved reward.</p><div class="steps"><div>01 / Purchase<small>Payment verification</small></div><div>02 / Confirm<small>Credits issued once</small></div><div>03 / Redeem<small>Eligible items</small></div></div></div>
+<div class="card"><h2>Latest activity</h2><div class="activity"><span id="latestActivity">Demo opening balance</span><b id="latestAmount">+750 BRM</b></div><p class="muted">Sign in to see your account activity.</p><button class="btn secondary" onclick="showTab('transactions')">View transactions</button></div></div>
 </section>
-<section id="market" class="panel"><div class="card"><div class="eyebrow">BRMMONEY MARKETPLACE</div><h1>Shop with BRM.</h1><p class="muted">Demo products only. Product eligibility and prices are examples, not connected to your Square catalog.</p>
-<div class="product"><div><h3>BRMMONEY Culture Tee</h3><span class="tag">BRM eligible · Demo</span></div><b>2,000 BRM</b></div>
-<div class="product"><div><h3>Community Sticker Pack</h3><span class="tag">BRM eligible · Demo</span></div><b>300 BRM</b></div>
-<div class="product"><div><h3>Limited Edition Hoodie</h3><span class="tag">BRM eligible · Demo</span></div><b>3,500 BRM</b></div>
-<p class="muted">Redemption is simulated. No order will be placed and no credits will be deducted.</p></div>
-<div class="card" style="margin-top:20px"><h2>One simple package</h2><p>$5.00 USD = 500 BRM</p><button class="btn" onclick="alert('Demo only: Square checkout is not connected. No payment was taken and no BRM was issued.')">Preview $5 credit purchase</button></div></section>
-<section id="transactions" class="panel">
-  <div class="card">
-    <div class="eyebrow">WALLET RECORD</div>
-    <h1>Transactions</h1>
-    <p class="muted">Your personal BRMMONEY credit history.</p>
-
-    <div id="transactionList">
-      <p class="muted">Sign in to load your transactions.</p>
-    </div>
-
-    <p id="transactionStatus" class="muted"></p>
-  </div>
-</section>
-<section id="community" class="panel">
-  <div class="card">
-    <div class="eyebrow">BRMMONEY COMMUNITY NETWORK</div>
-    <h1>Community activity</h1>
-    <p class="muted">Track the growth and activity of the BRMMONEY community.</p>
-
-    <div class="grid">
-      <div class="card">
-        <h3>New Members</h3>
-        <h2 id="chartMembers">0</h2>
-      </div>
-      <div class="card">
-        <h3>Total Credits Earned</h3>
-        <h2 id="chartCredits">0 BRM</h2>
-      </div>
-      <div class="card">
-        <h3>Referrals</h3>
-        <h2 id="chartReferrals">0</h2>
-      </div>
-      <div class="card">
-        <h3>Completed Activities</h3>
-        <h2 id="chartActivities">0</h2>
-      </div>
-    </div>
-
-    <h2 style="margin-top:30px">Community growth chart</h2>
-    <p class="muted">Four separate activity lines. Live database connection coming next.</p>
-
-    <div style="width:100%;overflow-x:auto">
-      <canvas id="communityChart" width="850" height="340"
-        style="width:100%;min-width:550px;background:#f7f9f4;border-radius:14px">
-      </canvas>
-    </div>
-
-    <p class="muted" id="chartStatus">
-      Preview mode — no live community data connected yet.
-    </p>
-  </div>
-</section>
-<section id="member" class="panel">
-  <div class="card">
-    <div class="eyebrow">BRMMONEY COMMUNITY</div>
-    <h1>Member Sign In</h1>
-    <p class="muted">Create your account or sign in to your community.</p>
-
-    <label for="memberEmail">Email address</label>
-    <input id="memberEmail" type="email" placeholder="Enter your email" autocomplete="email">
-
-    <label for="memberPassword">Password</label>
-    <input id="memberPassword" type="password" placeholder="At least 8 characters" autocomplete="current-password">
-
-    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
-      <button class="btn" id="memberSignUp">Create Account</button>
-      <button class="btn" id="memberSignIn">Sign In</button>
-      <button class="btn" id="memberForgotPassword">Forgot Password?</button>
-      <button class="btn" id="memberSignOut" hidden>Sign Out</button>
-    </div>
-<div id="passwordResetForm" hidden>
-  <label for="newMemberPassword">New password</label>
-  <input
-    id="newMemberPassword"
-    type="password"
-    placeholder="Enter your new password"
-    minlength="8"
-    autocomplete="new-password"
-  >
-  <button class="btn" id="saveNewPassword">Save New Password</button>
-</div>
-    <p id="memberMessage" class="muted" aria-live="polite">
-      Your account will be protected by Supabase authentication.
-    </p>
-    <p id="memberStatus" class="muted">You are not signed in.</p>
-  </div>
-</section>
-<section id="owner" class="panel">
-  <div class="card">
-    <div class="eyebrow">BRMMONEY OWNER ZONE 🔒</div>
-    <h1>Owner Reward Controls</h1>
-    <p class="muted">
-      Issue BRM rewards to community members. Only your authorized owner account can complete reward transactions.
-    </p>
-
-    <div class="activity">
-      <span>Credit package</span><b>$5 = 500 BRM</b>
-    </div>
-    <div class="activity">
-      <span>Expiration</span><b>Disabled</b>
-    </div>
-    <div class="activity">
-      <span>Refunds and chargebacks</span><b>Manual review</b>
-    </div>
-
-    <h2>Issue a member reward</h2>
-
-    <label for="rewardUserId">Member User ID</label>
-    <input id="rewardUserId" type="text" placeholder="Paste member UUID">
-
-    <label for="rewardAmount">Reward amount (whole BRM)</label>
-    <input id="rewardAmount" type="number" min="1" max="100000" step="1" placeholder="Example: 10">
-
-    <label for="rewardType">Reward category</label>
-    <select id="rewardType">
-      <option value="activity_reward">Activity reward</option>
-      <option value="shopping_bonus">Shopping bonus</option>
-      <option value="referral_reward">Referral reward</option>
-      <option value="special_reward">Special reward</option>
-    </select>
-
-    <label for="rewardDescription">Description</label>
-    <input id="rewardDescription" type="text" maxlength="160" placeholder="Example: Completed community activity">
-
-    <button class="btn" id="issueRewardButton" type="button">
-      Issue BRM Reward
-    </button>
-
-    <p id="ownerRewardMessage" class="muted" aria-live="polite">
-      Sign in with your authorized owner account to use these controls.
-    </p>
-  </div>
-</section>
+<section id="market" class="panel"><div class="card"><div class="eyebrow">BRMMONEY MARKETPLACE</div><h1>Shop with BRM.</h1><p class="muted">Sample products only. This preview does not place orders or deduct credits.</p>
+<div class="product"><div><h3>BRMMONEY Culture Tee</h3><span class="tag">Eligible · Demo item</span></div><b>2,000 BRM</b></div>
+<div class="product"><div><h3>Community Sticker Pack</h3><span class="tag">Eligible · Demo item</span></div><b>300 BRM</b></div>
+<div class="product"><div><h3>Limited Edition Hoodie</h3><span class="tag">Eligible · Demo item</span></div><b>3,500 BRM</b></div>
+<p class="muted">Demo redemption only—no order is placed and no credits are deducted.</div>
+<div class="card" style="margin-top:20px"><h2>Credit package</h2><p>$5.00 USD = 500 BRM</p><button class="btn" onclick="alert('Preview only. Square checkout is not connected; no payment or credits were processed.')">Preview credit purchase</button></div></section>
+<section id="transactions" class="panel"><div class="card"><div class="eyebrow">WALLET RECORD</div><h1>Transactions</h1><p class="muted">Your BRMMONEY credit history.</p><div id="transactionList"><p class="muted">Sign in to load your transactions.</p></div><p id="transactionStatus" class="muted"></p></div></section>
+<section id="community" class="panel"><div class="card"><div class="eyebrow">BRMMONEY COMMUNITY NETWORK</div><h1>Community activity</h1><p class="muted">Community growth metrics are placeholders until live data is connected.</p><div class="grid"><div class="card"><h3>New Members</h3><h2 id="chartMembers">0</h2></div><div class="card"><h3>Total Credits Earned</h3><h2 id="chartCredits">0 BRM</h2></div><div class="card"><h3>Referrals</h3><h2 id="chartReferrals">0</h2></div><div class="card"><h3>Completed Activities</h3><h2 id="chartActivities">0</h2></div></div><h2 style="margin-top:28px">Community activity chart</h2><div style="overflow-x:auto"><canvas id="communityChart" width="850" height="340" style="width:100%;min-width:550px;background:#f7f9f4;border-radius:14px"></canvas></div><p class="muted" id="chartStatus">Sample chart only — not live community data.</p></div></section>
+<section id="member" class="panel"><div class="card"><div class="eyebrow">BRMMONEY COMMUNITY</div><h1>Member Sign In</h1><p class="muted">Create an account or sign in.</p><label for="memberEmail">Email address</label><input id="memberEmail" type="email" placeholder="Email" autocomplete="email"><label for="memberPassword">Password</label><input id="memberPassword" type="password" placeholder="Minimum 8 characters" autocomplete="current-password"><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"><button class="btn" id="memberSignUp">Create Account</button><button class="btn" id="memberSignIn">Sign In</button><button class="btn" id="memberForgotPassword">Forgot Password?</button><button class="btn" id="memberSignOut" hidden>Sign Out</button></div><div id="passwordResetForm" hidden><label for="newMemberPassword">New password</label><input id="newMemberPassword" type="password" minlength="8" autocomplete="new-password"><button class="btn" id="saveNewPassword">Save New Password</button></div><p id="memberMessage" class="muted" aria-live="polite">Account access uses Supabase authentication.</p><p id="memberStatus" class="muted">You are not signed in.</p></div></section>
+<section id="owner" class="panel"><div class="card"><div class="eyebrow">BRMMONEY OWNER ZONE 🔒</div><h1>Owner Reward Controls</h1><p class="muted">Reward issuance requires your authorized owner account.</p><div class="activity"><span>Credit package</span><b>$5 = 500 BRM</b></div><div class="activity"><span>Expiration</span><b>Disabled</b></div><div class="activity"><span>Refunds and chargebacks</span><b>Manual review</b></div><h2>Issue a member reward</h2><label for="rewardUserId">Member User ID</label><input id="rewardUserId" type="text" placeholder="Member UUID"><label for="rewardAmount">Reward amount (whole BRM)</label><input id="rewardAmount" type="number" min="1" max="100000" step="1" placeholder="Amount"><label for="rewardType">Reward category</label><select id="rewardType"><option value="activity_reward">Activity reward</option><option value="shopping_bonus">Shopping bonus</option><option value="referral_reward">Referral reward</option><option value="special_reward">Special reward</option></select><label for="rewardDescription">Description</label><input id="rewardDescription" type="text" maxlength="160" placeholder="Reward details"><button class="btn" id="issueRewardButton" type="button">Issue BRM Reward</button><p id="ownerRewardMessage" class="muted" aria-live="polite">Sign in with the authorized owner account.</p></div></section>
 </main>
-<footer><b>BRMMONEY Community · Concept preview</b><br>All demo data stays in memory and resets on reload. No payment credentials, real customer data, live wallet, or deployed backend. BRM credits are not publicly traded cryptocurrency or an investment. Transfers and cash-out are not offered; applicable legal exceptions require review.<br><br>Proposed rules, not a final legal policy. Expiration is unset and disabled. Refund and chargeback events go to review; automatic reversals are disabled.</footer>
+<footer><b>BRMMONEY Community</b><br>Prototype. Square checkout and marketplace ordering are not connected. Credits are not cryptocurrency or an investment. Transfers and cash-out are not offered; legal exceptions require review. Expiration is disabled. Refund and chargeback events require manual review.</footer>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-// BRMMONEY Community — Supabase connection
+"use strict";
 const SUPABASE_URL = "https://xsmmjtbzplxswzaxufqx.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_MJCc4EAAIHkiIzjk6xn1Ng_naRtEoI4";
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_MJCc4EAAIHkiIzjk2xn1Ng_naRtEoI4";
-
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
-);
-const canvas = document.getElementById("communityChart");
-const ctx = canvas.getContext("2d");
-
-const chartLines = [
-  { name: "New Members", color: "#246bce", values: [2, 4, 3, 7, 9, 12, 15] },
-  { name: "Total Credits Earned", color: "#23945b", values: [10, 18, 25, 35, 48, 60, 75] },
-  { name: "Referrals", color: "#e49a27", values: [1, 2, 2, 4, 5, 7, 9] },
-  { name: "Completed Activities", color: "#914acb", values: [3, 5, 8, 10, 14, 18, 22] }
-];
-
-function drawCommunityChart() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  const left = 55;
-  const top = 30;
-  const width = 750;
-  const height = 230;
-  const max = 80;
-
-  ctx.font = "12px Arial";
-  ctx.fillStyle = "#68766e";
-
-  for (let i = 0; i <= 4; i++) {
-    const y = top + height - (i / 4) * height;
-    ctx.strokeStyle = "#dfe5dc";
-    ctx.beginPath();
-    ctx.moveTo(left, y);
-    ctx.lineTo(left + width, y);
-    ctx.stroke();
-    ctx.fillText(String(i * 20), 20, y + 4);
-  }
-
-  chartLines.forEach(line => {
-    ctx.strokeStyle = line.color;
-    ctx.lineWidth = 3;
-    ctx.beginPath();
-
-    line.values.forEach((value, index) => {
-      const x = left + (index / 6) * width;
-      const y = top + height - (value / max) * height;
-
-      if (index === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
-    });
-
-    ctx.stroke();
-  });
-
-  chartLines.forEach((line, index) => {
-    const x = 55 + (index % 2) * 380;
-    const y = 295 + Math.floor(index / 2) * 22;
-
-    ctx.fillStyle = line.color;
-    ctx.fillRect(x, y - 10, 12, 12);
-
-    ctx.fillStyle = "#18251f";
-    ctx.fillText(line.name, x + 19, y);
-  });
+function showTab(id) {
+  document.querySelectorAll(".panel").forEach(panel => panel.classList.toggle("active", panel.id === id));
+  document.querySelectorAll("nav button").forEach(button => button.classList.toggle("active", button.dataset.tab === id));
+  window.scrollTo({top:0,behavior:"smooth"});
 }
-
-drawCommunityChart();
-function showTab(id){document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));window.scrollTo({top:0,behavior:'smooth'})}
-document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
-// BRMMONEY MEMBER ACCOUNT FUNCTIONS
+document.querySelectorAll("nav button").forEach(button => button.addEventListener("click", () => showTab(button.dataset.tab)));
 
 const memberEmail = document.getElementById("memberEmail");
 const memberPassword = document.getElementById("memberPassword");
 const memberMessage = document.getElementById("memberMessage");
 const memberStatus = document.getElementById("memberStatus");
-// LOAD MEMBER TRANSACTION HISTORY
+const signOutButton = document.getElementById("memberSignOut");
+const ownerTab = document.getElementById("ownerTab");
 
 async function loadMemberTransactions(user) {
   const list = document.getElementById("transactionList");
   const status = document.getElementById("transactionStatus");
-
   list.textContent = "Loading your transactions...";
-
-  const { data, error } = await supabaseClient
-    .from("brm_credit_transactions")
+  const {data,error} = await supabaseClient.from("brm_credit_transactions")
     .select("amount, transaction_type, description, created_at")
-    .eq("user_id", user.id)
-    .order("created_at", { ascending: false });
-
-  if (error) {
-    list.textContent = "Could not load transactions.";
-    status.textContent = error.message;
-    return;
-  }
-
+    .eq("user_id",user.id).order("created_at",{ascending:false});
+  if(error){list.textContent="Could not load transactions.";status.textContent=error.message;return;}
   list.replaceChildren();
-
-  if (!data || data.length === 0) {
-    list.textContent = "No BRM credit transactions yet.";
-    status.textContent = "Your transaction history will appear here.";
-    return;
-  }
-
-  data.forEach((transaction) => {
-    const entry = document.createElement("div");
-    entry.className = "activity";
-
-    const details = document.createElement("span");
-    details.textContent =
-      (transaction.description || transaction.transaction_type || "BRM activity") +
-      " · " + new Date(transaction.created_at).toLocaleDateString();
-
-    const amount = document.createElement("b");
-    amount.textContent =
-      (transaction.amount > 0 ? "+" : "") +
-      Number(transaction.amount).toLocaleString() + " BRM";
-
-    entry.append(details, amount);
-    list.appendChild(entry);
+  if(!data || data.length===0){list.textContent="No BRM credit transactions yet.";status.textContent="Your transaction history will appear here.";return;}
+  data.forEach(transaction=>{
+    const entry=document.createElement("div");entry.className="activity";
+    const details=document.createElement("span");
+    details.textContent=(transaction.description||transaction.transaction_type||"BRM activity")+" · "+new Date(transaction.created_at).toLocaleDateString();
+    const amount=document.createElement("b");
+    amount.textContent=(transaction.amount>0?"+":"")+Number(transaction.amount).toLocaleString()+" BRM";
+    entry.append(details,amount);list.appendChild(entry);
   });
-
-  status.textContent = "Your transaction history is up to date.";
+  status.textContent="Your transaction history is up to date.";
 }
+
 async function updateMemberStatus(user) {
-  const signOutButton = document.getElementById("memberSignOut");
-  const balanceDisplay = document.getElementById("balance");
-  const dollarDisplay = document.getElementById("dollar");
-
-  if (user) {
-    const ownerTab = document.getElementById("ownerTab");
-    ownerTab.hidden = true;
-
-    try {
-      const { data: ownerData, error: ownerError } =
-        await supabaseClient.functions.invoke("owner-status", {
-          method: "GET"
-        });
-
-      if (!ownerError && ownerData?.isOwner === true) {
-        ownerTab.hidden = false;
-      }
-    } catch (error) {
-      console.error("Owner verification failed.");
-    }
-    memberStatus.textContent = "Signed in as: " + user.email;
-    signOutButton.hidden = false;
-
-    memberMessage.textContent = "Loading your BRMMONEY wallet...";
-
-    const { data, error } = await supabaseClient
-      .from("brm_wallet_balances")
-      .select("brm_balance")
-      .eq("user_id", user.id)
-      .maybeSingle();
-
-    if (error) {
-      memberMessage.textContent = "Wallet loading error: " + error.message;
-      return;
-    }
-
-    const balance = Number(data?.brm_balance || 0);
-
-    balanceDisplay.innerHTML =
-      balance.toLocaleString() + " <span>BRM</span>";
-
-    dollarDisplay.textContent =
-      "$" + (balance / 100).toFixed(2) + " toward eligible products";
-
-    memberMessage.textContent = "Your wallet is connected!";
-await loadMemberTransactions(user);
-  } else {    
-document.getElementById("ownerTab").hidden
-= true;
-memberStatus.textContent = "You are not
-signed in.";
-    signOutButton.hidden = true;
-  }
-}
-document.getElementById("memberSignUp")
-    .addEventListener("click", async () => {
-  const email = memberEmail.value.trim();
-  const password = memberPassword.value;
-
-  if (!email || password.length < 8) {
-    memberMessage.textContent = "Enter a valid email and a password of at least 8 characters.";
+  signOutButton.hidden = !user;
+  ownerTab.hidden = true;
+  document.getElementById("topStatus").textContent = user ? "Signed in" : "Guest";
+  if (!user) {
+    memberStatus.textContent = "You are not signed in.";
+    memberMessage.textContent = "Account access uses Supabase authentication.";
+    document.getElementById("balance").innerHTML = '750 <span>BRM</span>';
+    document.getElementById("dollar").textContent = "$7.50 toward eligible products";
+    document.getElementById("walletLabel").textContent = "DEMO WALLET";
+    document.getElementById("transactionList").innerHTML = "<p class='muted'>Sign in to load your transactions.</p>";
+    document.getElementById("transactionStatus").textContent = "";
     return;
   }
-
-  memberMessage.textContent = "Creating your account...";
-
-  const { data, error } = await supabaseClient.auth.signUp({
-    email,
-    password
-  });
-
-  if (error) {
-    memberMessage.textContent = error.message;
-    return;
-  }
-
-  memberMessage.textContent = data.session
-    ? "Your account has been created and you are signed in!"
-    : "Account created! Check your email for a confirmation link.";
-
-  updateMemberStatus(data.user);
-});
-
-document.getElementById("memberSignIn").addEventListener("click", async () => {
-  const email = memberEmail.value.trim();
-  const password = memberPassword.value;
-
-  if (!email || !password) {
-    memberMessage.textContent = "Enter your email and password.";
-    return;
-  }
-
-  memberMessage.textContent = "Signing in...";
-
-  const { data, error } = await supabaseClient.auth.signInWithPassword({
-    email,
-    password
-  });
-
-  if (error) {
-    memberMessage.textContent = error.message;
-    return;
-  }
-
-  memberMessage.textContent = "Welcome to BRMMONEY Community!";
-  updateMemberStatus(data.user);
-});
-document.getElementById("memberForgotPassword").addEventListener("click", async () => {
-  const email = memberEmail.value.trim();
-
-  if (!email) {
-    memberMessage.textContent = "Enter your email address first.";
-    return;
-  }
-
-  memberMessage.textContent = "Sending password reset email...";
-
-  const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
-    redirectTo: "https://brandingrealmoments-hub.github.io/brm-community/"
-  });
-
-  if (error) {
-    memberMessage.textContent = error.message;
-    return;
-  }
-
-  memberMessage.textContent =
-    "Password reset email sent! Check your inbox and follow the link.";
-});
-document.getElementById("memberSignOut").addEventListener("click", async () => {
-  const { error } = await supabaseClient.auth.signOut();
-
-  if (error) {
-    memberMessage.textContent = error.message;
-    return;
-  }
-
-  memberMessage.textContent = "You have signed out.";
-  updateMemberStatus(null);
-});
-
-supabaseClient.auth.getSession().then(({ data }) => {
-  updateMemberStatus(data.session?.user || null);
-});
-
-supabaseClient.auth.onAuthStateChange((_event, session) => {
-  updateMemberStatus(session?.user || null);
-});
-// BRMMONEY PASSWORD RESET
-
-const passwordResetForm = document.getElementById("passwordResetForm");
-const newMemberPassword = document.getElementById("newMemberPassword");
-
-supabaseClient.auth.onAuthStateChange((event, session) => {
-  if (event === "PASSWORD_RECOVERY" && session) {
-    passwordResetForm.hidden = false;
-    memberMessage.textContent = "Enter your new password below.";
-  }
-});
-
-document.getElementById("saveNewPassword").addEventListener("click", async () => {
-  const newPassword = newMemberPassword.value;
-
-  if (newPassword.length < 8) {
-    memberMessage.textContent = "Your password must be at least 8 characters.";
-    return;
-  }
-
-  memberMessage.textContent = "Saving your new password...";
-
-  const { error } = await supabaseClient.auth.updateUser({
-    password: newPassword
-  });
-
-  if (error) {
-    memberMessage.textContent = error.message;
-    return;
-  }
-
-  passwordResetForm.hidden = true;
-  newMemberPassword.value = "";
-  memberMessage.textContent = "Your new password has been saved! You can now sign in.";
-});
-// BRMMONEY OWNER REWARD CONTROLS
-document.getElementById("issueRewardButton").addEventListener("click", async () => {
-  const button = document.getElementById("issueRewardButton");
-  const message = document.getElementById("ownerRewardMessage");
-
-  const targetUserId = document.getElementById("rewardUserId").value.trim();
-  const amount = Number(document.getElementById("rewardAmount").value);
-  const transactionType = document.getElementById("rewardType").value;
-  const description = document.getElementById("rewardDescription").value.trim();
-
-  const validUUID =
-    /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-
-  if (!validUUID.test(targetUserId)) {
-    message.textContent = "Enter a valid member User ID.";
-    return;
-  }
-
-  if (!Number.isSafeInteger(amount) || amount < 1 || amount > 100000) {
-    message.textContent = "Enter a whole BRM amount between 1 and 100,000.";
-    return;
-  }
-
-  if (!description || description.length > 160) {
-    message.textContent = "Enter a description of up to 160 characters.";
-    return;
-  }
-
-  button.disabled = true;
-  message.textContent = "Checking your owner authorization...";
-
+  memberStatus.textContent = "Signed in as: " + (user.email || "member");
+  memberMessage.textContent = "Checking your owner access...";
   try {
-    const { data: sessionData, error: sessionError } =
-      await supabaseClient.auth.getSession();
+    const {data:ownerData,error:ownerError} = await supabaseClient.functions.invoke("owner-status",{method:"GET"});
+    if(!ownerError && ownerData && ownerData.isOwner === true) ownerTab.hidden = false;
+  } catch (e) { console.warn("Owner verification failed."); }
+  memberMessage.textContent = "Loading your BRMMONEY wallet...";
+  const {data,error} = await supabaseClient.from("brm_wallet_balances").select("brm_balance").eq("user_id",user.id).maybeSingle();
+  if(error){memberMessage.textContent="Wallet loading error: "+error.message;return;}
+  const balance=Number(data?.brm_balance||0);
+  document.getElementById("balance").innerHTML=balance.toLocaleString()+" <span>BRM</span>";
+  document.getElementById("dollar").textContent="$"+(balance/100).toFixed(2)+" toward eligible products";
+  document.getElementById("walletLabel").textContent="MEMBER WALLET";
+  memberMessage.textContent="Your wallet is connected!";
+  await loadMemberTransactions(user);
+}
 
-    if (sessionError || !sessionData.session) {
-      message.textContent = "Please sign in before issuing rewards.";
-      return;
-    }
-
-    message.textContent = "Submitting reward securely...";
-
-    const { data, error } =
-      await supabaseClient.functions.invoke("issue-brm-reward", {
-        body: {
-          target_user_id: targetUserId,
-          amount: amount,
-          transaction_type: transactionType,
-          description: description,
-          idempotency_key: "owner-reward-" + crypto.randomUUID()
-        }
-      });
-
-    if (error) {
-      message.textContent = "Reward request failed: " + error.message;
-      return;
-    }
-
-    if (!data?.success) {
-      message.textContent = data?.error || "Reward was not issued.";
-      return;
-    }
-
-    message.textContent =
-      "Success! " + amount + " BRM issued to the member.";
-
-    document.getElementById("rewardUserId").value = "";
-    document.getElementById("rewardAmount").value = "";
-    document.getElementById("rewardDescription").value = "";
-
-    await updateMemberStatus(sessionData.session.user);
-
-  } catch (error) {
-    message.textContent = "Something went wrong. Please check the function logs.";
-  } finally {
-    button.disabled = false;
-  }
+document.getElementById("memberSignUp").addEventListener("click",async()=>{
+  const email=memberEmail.value.trim(),password=memberPassword.value;
+  if(!email||password.length<8){memberMessage.textContent="Enter a valid email and password of at least 8 characters.";return;}
+  memberMessage.textContent="Creating your account...";
+  const {data,error}=await supabaseClient.auth.signUp({email,password});
+  if(error){memberMessage.textContent=error.message;return;}
+  memberMessage.textContent=data.session?"Account created and signed in!":"Account created. Check your email for a confirmation link.";
+  await updateMemberStatus(data.user);
 });
+document.getElementById("memberSignIn").addEventListener("click",async()=>{
+  const email=memberEmail.value.trim(),password=memberPassword.value;
+  if(!email||!password){memberMessage.textContent="Enter your email and password.";return;}
+  memberMessage.textContent="Signing in...";
+  const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});
+  if(error){memberMessage.textContent=error.message;return;}
+  memberMessage.textContent="Welcome to BRMMONEY Community!";
+  await updateMemberStatus(data.user);
+});
+document.getElementById("memberForgotPassword").addEventListener("click",async()=>{
+  const email=memberEmail.value.trim();
+  if(!email){memberMessage.textContent="Enter your email address first.";return;}
+  memberMessage.textContent="Sending password reset email...";
+  const {error}=await supabaseClient.auth.resetPasswordForEmail(email,{redirectTo:"https://brandingrealmoments-hub.github.io/brm-community/"});
+  if(error){memberMessage.textContent=error.message;return;}
+  memberMessage.textContent="Password reset email sent. Check your inbox.";
+});
+signOutButton.addEventListener("click",async()=>{
+  const {error}=await supabaseClient.auth.signOut();
+  if(error){memberMessage.textContent=error.message;return;}
+  memberMessage.textContent="You have signed out.";
+  await updateMemberStatus(null);
+});
+supabaseClient.auth.getSession().then(({data})=>updateMemberStatus(data.session?.user||null));
+supabaseClient.auth.onAuthStateChange((_event,session)=>updateMemberStatus(session?.user||null));
+
+const passwordResetForm=document.getElementById("passwordResetForm");
+const newMemberPassword=document.getElementById("newMemberPassword");
+supabaseClient.auth.onAuthStateChange((event,session)=>{
+  if(event==="PASSWORD_RECOVERY"&&session){passwordResetForm.hidden=false;memberMessage.textContent="Enter your new password below.";}
+});
+document.getElementById("saveNewPassword").addEventListener("click",async()=>{
+  const newPassword=newMemberPassword.value;
+  if(newPassword.length<8){memberMessage.textContent="Your password must be at least 8 characters.";return;}
+  memberMessage.textContent="Saving your new password...";
+  const {error}=await supabaseClient.auth.updateUser({password:newPassword});
+  if(error){memberMessage.textContent=error.message;return;}
+  passwordResetForm.hidden=true;newMemberPassword.value="";
+  memberMessage.textContent="Password saved successfully. You can sign in now.";
+});
+
+document.getElementById("issueRewardButton").addEventListener("click",async()=>{
+  const button=document.getElementById("issueRewardButton"),message=document.getElementById("ownerRewardMessage");
+  const targetUserId=document.getElementById("rewardUserId").value.trim();
+  const amount=Number(document.getElementById("rewardAmount").value);
+  const transactionType=document.getElementById("rewardType").value;
+  const description=document.getElementById("rewardDescription").value.trim();
+  const validUUID=/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+  if(!validUUID.test(targetUserId)){message.textContent="Enter a valid member User ID.";return;}
+  if(!Number.isSafeInteger(amount)||amount<1||amount>100000){message.textContent="Enter a whole BRM amount between 1 and 100,000.";return;}
+  if(!description||description.length>160){message.textContent="Enter a description up to 160 characters.";return;}
+  button.disabled=true;message.textContent="Checking owner authorization...";
+  try{
+    const {data:sessionData,error:sessionError}=await supabaseClient.auth.getSession();
+    if(sessionError||!sessionData.session){message.textContent="Please sign in before issuing rewards.";return;}
+    message.textContent="Submitting reward securely...";
+    const {data,error}=await supabaseClient.functions.invoke("issue-brm-reward",{body:{
+      target_user_id:targetUserId,amount,transaction_type:transactionType,description,idempotency_key:"owner-reward-"+crypto.randomUUID()
+    }});
+    if(error){message.textContent="Reward request failed: "+error.message;return;}
+    if(!data?.success){message.textContent=data?.error||"Reward was not issued.";return;}
+    message.textContent="Success! "+amount+" BRM issued to the member.";
+    document.getElementById("rewardUserId").value="";document.getElementById("rewardAmount").value="";document.getElementById("rewardDescription").value="";
+    await updateMemberStatus(sessionData.session.user);
+  }catch(e){message.textContent="Something went wrong. Check the function logs.";}
+  finally{button.disabled=false;}
+});
+
+// Static sample chart only, deliberately labeled as non-live.
+const chart=document.getElementById("communityChart");
+const chartContext=chart.getContext("2d");
+const sampleLines=[
+  {name:"New Members",color:"#246bce",values:[2,4,3,7,9,12,15]},
+  {name:"Total Credits Earned",color:"#23945b",values:[10,18,25,35,48,60,75]},
+  {name:"Referrals",color:"#e49a27",values:[1,2,2,4,5,7,9]},
+  {name:"Completed Activities",color:"#914acb",values:[3,5,8,10,14,18,22]}
+];
+function drawSampleChart(){
+  chartContext.clearRect(0,0,chart.width,chart.height);
+  const left=55,top=30,width=750,height=230,max=80;
+  chartContext.font="12px Arial";chartContext.fillStyle="#68766e";
+  for(let i=0;i<=4;i++){
+    const y=top+height-(i/4)*height;chartContext.strokeStyle="#dfe5dc";
+    chartContext.beginPath();chartContext.moveTo(left,y);chartContext.lineTo(left+width,y);chartContext.stroke();
+    chartContext.fillText(String(i*20),20,y+4);
+  }
+  sampleLines.forEach(line=>{
+    chartContext.strokeStyle=line.color;chartContext.lineWidth=3;chartContext.beginPath();
+    line.values.forEach((value,index)=>{const x=left+(index/6)*width,y=top+height-(value/max)*height;if(index===0)chartContext.moveTo(x,y);else chartContext.lineTo(x,y);});
+    chartContext.stroke();
+  });
+  sampleLines.forEach((line,index)=>{
+    const x=55+(index%2)*380,y=295+Math.floor(index/2)*22;
+    chartContext.fillStyle=line.color;chartContext.fillRect(x,y-10,12,12);chartContext.fillStyle="#18251f";chartContext.fillText(line.name,x+19,y);
+  });
+}
+drawSampleChart();
 </script>
 </body>
 </html>
-
